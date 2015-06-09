@@ -10,7 +10,7 @@
 
         .style1
         {
-            width: 196px;
+            width: 195px;
         }
         .auto-style1 {
             height: 34px;
