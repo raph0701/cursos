@@ -1,0 +1,6 @@
+c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\bin\Cursos.dll.config
+c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\bin\Cursos.dll
+c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\bin\Cursos.pdb
+c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\obj\Debug\Cursos.dll
+c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\obj\Debug\Cursos.pdb
+C:\Users\Genesis\documents\visual studio 2013\Projects\Cursos\Cursos\obj\Debug\Cursos.csprojResolveAssemblyReference.cache
