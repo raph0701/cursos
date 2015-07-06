@@ -19,8 +19,20 @@
             height: 20px;
         }
 
-        .auto-style1 {
-            height: 34px;
+        .auto-style7 {
+            height: 38px;
+        }
+        .auto-style8 {
+            height: 44px;
+        }
+        .auto-style9 {
+            height: 40px;
+        }
+        .auto-style10 {
+            height: 37px;
+        }
+        .auto-style11 {
+            height: 35px;
         }
     </style>
 </head>
@@ -148,19 +160,20 @@
           
          
             <tr>
-                <td>
+                <td class="auto-style11">
                     <asp:Label ID="lblnombre" runat="server" Text="NOMBRE"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtnombre" runat="server" Width="158px"></asp:TextBox>
+                    <asp:TextBox ID="txtnombre" runat="server" 
+                        input type="text" name="nom"  onkeypress="return soloLetras(event)" Width="300px"></asp:TextBox>
                     &nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style11"></td>
+                <td class="auto-style11"></td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="lbldescripcion" runat="server" Text="DESCRIPCION"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtdescripcion" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtdescripcion" runat="server" Width="300px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -169,7 +182,7 @@
                 <td class="auto-style4">
                     <asp:Label ID="lblcategoria" runat="server" Text="CATEGORIA"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:DropDownList ID="ddlcategoria" runat="server">
+                    <asp:DropDownList ID="ddlcategoria" runat="server" Height="23px" Width="175px">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -179,7 +192,7 @@
                 <td>
                     <asp:Label ID="lblobjetivos" runat="server" Text="OBJETIVOS"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtobjetivos" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtobjetivos" runat="server" Width="300px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -187,8 +200,8 @@
             <tr>
                 <td>
                     <asp:Label ID="lblva_dirigido" runat="server" Text="VA DIRIGIDO"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtva_dirigido" runat="server"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="txtva_dirigido" runat="server" Width="300px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -196,74 +209,80 @@
             <tr>
                 <td>
                     <asp:Label ID="lblprerequisito" runat="server" Text="prerequisito"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtprerequisito" runat="server"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="txtprerequisito" runat="server" Width="300px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style10">
                     <asp:Label ID="lblaprendizaje" runat="server" Text="APRENDIZAJE"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtaprendizaje" runat="server"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+                    <asp:TextBox ID="txtaprendizaje" runat="server"
+                        input type="text" name="nom"  onkeypress="return soloLetras(event)" Width="300px"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style10"></td>
+                <td class="auto-style10"></td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="lblprecio_ucsg" runat="server" Text="PRECIO UCSG"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtprecio_ucsg" runat="server"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                    <asp:TextBox ID="txtprecio_ucsg" runat="server"
+                        input type= "text" name="nom" onkeypress="return validar_numeros(event)" Width="100px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="auto-style9">
                     <asp:Label ID="lblprecio_publico" runat="server" Text="PRECIO PUBLICO"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtprecio_publico" runat="server" Width="144px"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                    <asp:TextBox ID="txtprecio_publico" runat="server"
+                        input type= "text" name="nom" onkeypress="return validar_numeros(event)" Width="100px"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style9"></td>
+                <td class="auto-style9"></td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="lblmax_estudiante" runat="server" Text="MAX ESTUDIANTE"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtmax_estudiante" runat="server" Width="148px"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="txtmax_estudiante" runat="server"
+                        input type= "text" name="nom" onkeypress="return validar_numeros(event)" Width="100px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style8">
                     <asp:Label ID="lblmin_estudiante" runat="server" Text="MIN ESTUDIANTE"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtmin_estudiante" runat="server"></asp:TextBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:TextBox ID="txtmin_estudiante" runat="server"
+                        input type= "text" name="nom" onkeypress="return validar_numeros(event)" Width="100px"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style8"></td>
+                <td class="auto-style8"></td>
             </tr>
             <tr>
                 <td>
                     <asp:Label ID="lblhorario" runat="server" Text="HORARIO"></asp:Label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="txthorario" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>
+                <td class="auto-style7">
                     <asp:Label ID="lbldocente" runat="server" Text="DOCENTE"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtdocente" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtdocente" runat="server"
+                        input type="text" name="nom"  onkeypress="return soloLetras(event)"></asp:TextBox>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style7"></td>
+                <td class="auto-style7"></td>
             </tr>
             <tr>
                 <td>
@@ -281,7 +300,9 @@
                 <td>
                     <asp:Label ID="lbln_horas" runat="server" Text="N° HORAS"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtn_horas" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtn_horas" runat="server"
+                        input type= "text" name="nom" onkeypress="return validar_numeros(event)"></asp:TextBox>
+
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -291,7 +312,7 @@
                     <asp:Label ID="lblfecha_inicio" runat="server" Text="FECHA DE INICIO"></asp:Label>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtfecha_inicio" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtfecha_inicio" runat="server" type="date"></asp:TextBox>
                 </td>
             </tr>
             <tr>    <td>&nbsp;</td>
@@ -611,3 +632,41 @@
         </table>
     </form>
 </body>
+    <script type="text/javascript">
+
+    function validar_numeros(e) {
+
+        tecla = (document.all) ? e.keyCode : e.which;
+        patron = /[0-9]/;
+
+        te = String.fromCharCode(tecla);
+        return patron.test(te);
+    }
+
+  
+    function Limpiar() {
+        document.getElementById('<%=txtnombre.ClientID%>').value = '';
+
+    }
+
+
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+            especiales = "8-37-39-46";
+
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                return false;
+            }
+        }
+      
+    </script>
