@@ -166,13 +166,13 @@ namespace Cursos {
         protected global::System.Web.UI.WebControls.Label lblcategoria;
         
         /// <summary>
-        /// Control txtcategoria.
+        /// Control ddlcategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtcategoria;
+        protected global::System.Web.UI.WebControls.DropDownList ddlcategoria;
         
         /// <summary>
         /// Control lblobjetivos.
@@ -211,22 +211,22 @@ namespace Cursos {
         protected global::System.Web.UI.WebControls.TextBox txtva_dirigido;
         
         /// <summary>
-        /// Control lblprerrequisito.
+        /// Control lblprerequisito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblprerrequisito;
+        protected global::System.Web.UI.WebControls.Label lblprerequisito;
         
         /// <summary>
-        /// Control txtprerrequisito.
+        /// Control txtprerequisito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtprerrequisito;
+        protected global::System.Web.UI.WebControls.TextBox txtprerequisito;
         
         /// <summary>
         /// Control lblaprendizaje.

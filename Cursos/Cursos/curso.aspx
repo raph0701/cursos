@@ -39,8 +39,9 @@
                     &nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;
                     <asp:DropDownList ID="ddlbuscar" runat="server">
-                        <asp:ListItem Value="N">NOMBRE</asp:ListItem>
-                        <asp:ListItem Value="C">CATEGORIA</asp:ListItem>
+                        <asp:ListItem Value="nombre">NOMBRE</asp:ListItem>
+                        <asp:ListItem Value="categoria">CATEGORIA</asp:ListItem>
+                        <asp:ListItem Value="codigo">CODIGO</asp:ListItem>
                     </asp:DropDownList>
                     <asp:TextBox ID="txtbuscar" runat="server"></asp:TextBox>
                     &nbsp;
@@ -78,7 +79,7 @@
                             <asp:BoundField DataField="categoria" HeaderText="CATEGORIA" />
                             <asp:BoundField DataField="objetivos" HeaderText="OBJETIVOS" />
                             <asp:BoundField DataField="va_dirigido" HeaderText="A QUIEN VA DIRIGIDO" />
-                            <asp:BoundField DataField="prerrequisito" HeaderText="PRE REQUISITOS" />
+                            <asp:BoundField DataField="prerequisito" HeaderText="PRE REQUISITOS" />
                             <asp:BoundField DataField="aprendizaje" HeaderText="APRENDIZAJE" />
                             <asp:BoundField DataField="precio_ucsg" HeaderText="PRECIO UCSG" />
                             <asp:BoundField DataField="precio_publico" HeaderText="PRECIO PUBLICO" />
@@ -96,6 +97,7 @@
                             </asp:ImageField>
                             <asp:BoundField DataField="estado" HeaderText="ESTADO" />
                             <asp:ButtonField CommandName="eliminar" Text="ELIMINAR" />
+                            
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -167,7 +169,8 @@
                 <td class="auto-style4">
                     <asp:Label ID="lblcategoria" runat="server" Text="CATEGORIA"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtcategoria" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="ddlcategoria" runat="server">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
@@ -192,9 +195,9 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblprerrequisito" runat="server" Text="PRERREQUISITO"></asp:Label>
+                    <asp:Label ID="lblprerequisito" runat="server" Text="prerequisito"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtprerrequisito" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtprerequisito" runat="server"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

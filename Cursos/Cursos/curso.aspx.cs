@@ -15,59 +15,22 @@ namespace Cursos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*lblcodigo.Visible = false;
-            txtcodigo.Visible = false;
-            lblnombre.Visible = false;
-            txtnombre.Visible = false;
-            lbldescripcion.Visible = false;
-            txtdescripcion.Visible = false;
-            lblcategoria.Visible = false;
-            txtcategoria.Visible = false;
-            lblobjetivos.Visible = false;
-            txtobjetivos.Visible = false;
-            lblva_dirigido.Visible = false;
-            txtva_dirigido.Visible = false;
-            lblprerrequisito.Visible = false;
-            txtprerrequisito.Visible = false;
-            lblaprendizaje.Visible = false;
-            txtaprendizaje.Visible = false;
-            lblprecio_ucsg.Visible = false;
-            txtprecio_ucsg.Visible = false;
-            lblprecio_publico.Visible = false;
-            txtprecio_publico.Visible = false;
-            lblmax_estudiante.Visible = false;
-            txtmax_estudiante.Visible = false;
-            lblmin_estudiante.Visible = false;
-            txtmin_estudiante.Visible = false;
-            lblhorario.Visible = false;
-            txthorario.Visible = false;
-            lbldocente.Visible = false;
-            txtdocente.Visible = false;
-            lblcertificacion.Visible = false;
-            rblcertificacion.Visible = false;
-            lbln_horas.Visible = false;
-            txtn_horas.Visible = false;
-
-            lblfecha_inicio.Visible = false;
-            txtfecha_inicio.Visible = false;
-            lblfoto.Visible = false;
-            fufoto.Visible = false;
-            lbltema_1.Visible = false;
-            txttema_1.Visible = false;
-            lbltema_2.Visible = false;
-            txttema_2.Visible = false;
-            lbltema_3.Visible = false;
-            txttema_3.Visible = false;*/
             tbCampos.Visible = false;
-
+            
 
             if (!Page.IsPostBack)
             {
+
+                cargaCategorias(); 
                 ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
                 String cadena_conexion = param.ConnectionString;
 
                 SqlConnection conexion = new SqlConnection(cadena_conexion);
-                String sql = "SELECT * FROM tb_curso WHERE estado = 'A'";
+                String sql = "SELECT c.codigo, c.nombre, c.descripcion, ca.descripcion as categoria, c.objetivos, c.va_dirigido, c.prerequisito, " +
+                                    "c.aprendizaje, c.precio_ucsg, c.precio_publico, c.max_estudiante, c.min_estudiante, c.horario, c.docente, " +
+                                    "c.certificacion, c.n_horas, c.fecha_inicio, c.foto, c.tema_1, c.tema_2, c.tema_3, c.estado " +
+                               "FROM tb_curso c, tb_categorias_cursos ca " +
+                               "WHERE ca.id=c.categoria and c.estado = 'A'";
                 SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -79,147 +42,21 @@ namespace Cursos
 
         protected void btnnuevo_Click(object sender, EventArgs e)
         {
-            /*txtcodigo.Visible = true;
-            lblnombre.Visible = true;
-            txtnombre.Visible = true;
-            lbldescripcion.Visible = true;
-            txtdescripcion.Visible = true;
-            lblcategoria.Visible = true;
-            txtcategoria.Visible = true;
-            lblobjetivos.Visible = true;
-            txtobjetivos.Visible = true;
-            lblva_dirigido.Visible = true;
-            txtva_dirigido.Visible = true;
-            lblprerrequisito.Visible = true;
-            txtprerrequisito.Visible = true;
-            lblaprendizaje.Visible = true;
-            txtaprendizaje.Visible = true;
-            lblprecio_ucsg.Visible = true;
-            txtprecio_ucsg.Visible = true;
-            lblprecio_publico.Visible = true;
-            txtprecio_publico.Visible = true;
-            lblmax_estudiante.Visible = true;
-            txtmax_estudiante.Visible = true;
-            lblmin_estudiante.Visible = true;
-            txtmin_estudiante.Visible = true;
-            lblhorario.Visible = true;
-            txthorario.Visible = true;
-            lbldocente.Visible = true;
-            txtdocente.Visible = true;
-            lblcertificacion.Visible = true;
-            rblcertificacion.Visible = true;
-            lbln_horas.Visible = true;
-            txtn_horas.Visible = true;
-
-            lblfecha_inicio.Visible = true;
-            txtfecha_inicio.Visible = true;
-            // lblfoto.Visible = false;
-            lbltema_1.Visible = true;
-            txttema_1.Visible = true;
-            lbltema_2.Visible = true;
-            txttema_2.Visible = true;
-            lbltema_3.Visible = true;
-            txttema_3.Visible = true;
-            lblfoto.Visible = true;
-            fufoto.Visible = true;
-            */
+            
             tbCampos.Visible = true;
 
-            txtcodigo.Enabled = false;
-            txtnombre.Enabled = true;
-            txtdescripcion.Enabled = true;
-            txtcategoria.Enabled = true;
-            txtobjetivos.Enabled = true;
-            txtva_dirigido.Enabled = true;
-            txtprerrequisito.Enabled = true;
-            txtaprendizaje.Enabled = true;
-            txtprecio_ucsg.Enabled = true;
-            txtprecio_publico.Enabled = true;
-            txtmax_estudiante.Enabled = true;
-            txtmin_estudiante.Enabled = true;
-            txthorario.Enabled = true;
-            txtdocente.Enabled = true;
-            rblcertificacion.Enabled = true;
-            txtn_horas.Enabled = true;
-            txtfecha_inicio.Enabled = true;
-            // lblfoto.Visible = false;
-            txttema_1.Enabled = true;
-            txttema_2.Enabled = true;
-            txttema_3.Enabled = true;
-            fufoto.Enabled = true;
+            habilitaCampos(true);
+            limpiaCampos();
 
-            txtcodigo.Text = "";
-            txtcodigo.Enabled = false;
-            txtnombre.Text = "";
-            txtdescripcion.Text = "";
-            txtcategoria.Text = "";
-            txtobjetivos.Text = "";
-            txtva_dirigido.Text = "";
-            txtprerrequisito.Text = "";
-            txtaprendizaje.Text = "";
-            txtprecio_ucsg.Text = "";
-            txtprecio_publico.Text = "";
-            txtmax_estudiante.Text = "";
-            txtmin_estudiante.Text = "";
-            txthorario.Text = "";
-            txtdocente.Text = "";
-            rblcertificacion.SelectedIndex = 0;
-            txtn_horas.Text = "";
-            txtfecha_inicio.Text = "";
-            lblfoto.Visible = false;
-            txttema_1.Text = "";
-            txttema_2.Text = "";
-            txttema_3.Text = "";
-
-
+            cargaIdCurso();
             Session["modo"] = "I";
 
         }
 
         protected void grvcurso_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            txtcodigo.Visible = true;
-            lblnombre.Visible = true;
-            txtnombre.Visible = true;
-            lbldescripcion.Visible = true;
-            txtdescripcion.Visible = true;
-            lblcategoria.Visible = true;
-            txtcategoria.Visible = true;
-            lblobjetivos.Visible = true;
-            txtobjetivos.Visible = true;
-            lblva_dirigido.Visible = true;
-            txtva_dirigido.Visible = true;
-            lblprerrequisito.Visible = true;
-            txtprerrequisito.Visible = true;
-            lblaprendizaje.Visible = true;
-            txtaprendizaje.Visible = true;
-            lblprecio_ucsg.Visible = true;
-            txtprecio_ucsg.Visible = true;
-            lblprecio_publico.Visible = true;
-            txtprecio_publico.Visible = true;
-            lblmax_estudiante.Visible = true;
-            txtmax_estudiante.Visible = true;
-            lblmin_estudiante.Visible = true;
-            txtmin_estudiante.Visible = true;
-            lblhorario.Visible = true;
-            txthorario.Visible = true;
-            lbldocente.Visible = true;
-            txtdocente.Visible = true;
-            lblcertificacion.Visible = true;
-            rblcertificacion.Visible = true;
-            lbln_horas.Visible = true;
-            txtn_horas.Visible = true;
-
-            lblfecha_inicio.Visible = true;
-            txtfecha_inicio.Visible = true;
-            // lblfoto.Visible = false;
-            lbltema_1.Visible = true;
-            txttema_1.Visible = true;
-            lbltema_2.Visible = true;
-            txttema_2.Visible = true;
-            txttema_3.Visible = true;
-            fufoto.Visible = true;
-
+           
+            tbCampos.Visible = true;
             int fila = Convert.ToInt32(e.CommandArgument);
             GridViewRow registro = grvcursos.Rows[fila];
 
@@ -227,10 +64,19 @@ namespace Cursos
             txtcodigo.Enabled = false;
             txtnombre.Text = registro.Cells[2].Text;
             txtdescripcion.Text = registro.Cells[3].Text;
-            txtcategoria.Text = registro.Cells[4].Text;
+             
+            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
+            String cadena_conexion = param.ConnectionString;
+            SqlConnection conexion = new SqlConnection(cadena_conexion);
+            SqlCommand OrdenSqlSelect = new SqlCommand("SELECT  id from tb_categorias_cursos where descripcion = '"+registro.Cells[4].Text+"'");
+            SqlDataAdapter da = new SqlDataAdapter(OrdenSqlSelect.CommandText, conexion);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            ddlcategoria.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["id"].ToString()); ;
+
             txtobjetivos.Text = registro.Cells[5].Text;
             txtva_dirigido.Text = registro.Cells[6].Text;
-            txtprerrequisito.Text = registro.Cells[7].Text;
+            txtprerequisito.Text = registro.Cells[7].Text;
             txtaprendizaje.Text = registro.Cells[8].Text;
             txtprecio_ucsg.Text = registro.Cells[9].Text;
             txtprecio_publico.Text = registro.Cells[10].Text;
@@ -249,60 +95,15 @@ namespace Cursos
 
             if (e.CommandName == "modificar")
             {
-                txtcodigo.Enabled = false;
-                txtnombre.Enabled = false;
-                txtdescripcion.Enabled = false;
-                txtcategoria.Enabled = false;
-                txtobjetivos.Enabled = false;
-                txtva_dirigido.Enabled = false;
-                txtprerrequisito.Enabled = false;
-                txtaprendizaje.Enabled = false;
-                txtprecio_ucsg.Enabled = false;
-                txtprecio_publico.Enabled = false;
-                txtmax_estudiante.Enabled = false;
-                txtmin_estudiante.Enabled = false;
-                txthorario.Enabled = false;
-                txtdocente.Enabled = false;
-                rblcertificacion.Enabled = false;
-                txtn_horas.Enabled = false;
-                txtfecha_inicio.Enabled = false;
-                fufoto.Enabled = false;
-                txttema_1.Enabled = false;
-                txttema_2.Enabled = false;
-                txttema_3.Enabled = false;
-                // lblmensa.Text = "";
-                btngrabar.Enabled = true;
-                btnlimpiar.Enabled = true;
                 tbCampos.Visible = true;
                 Session["modo"] = "M";
             }
             else
             {
-                txtcodigo.Enabled = true;
-                txtnombre.Enabled = true;
-                txtdescripcion.Enabled = true;
-                txtcategoria.Enabled = true;
-                txtobjetivos.Enabled = true;
-                txtva_dirigido.Enabled = true;
-                txtprerrequisito.Enabled = true;
-                txtaprendizaje.Enabled = true;
-                txtprecio_ucsg.Enabled = true;
-                txtprecio_publico.Enabled = true;
-                txtmax_estudiante.Enabled = true;
-                txtmin_estudiante.Enabled = true;
-                txthorario.Enabled = true;
-                txtdocente.Enabled = true;
-                rblcertificacion.Enabled = true;
-                txtn_horas.Enabled = true;
-                txtfecha_inicio.Enabled = true;
-                fufoto.Enabled = true;
-                txttema_1.Enabled = true;
-                txttema_2.Enabled = true;
-                txttema_3.Enabled = true;
-                // lblmensa.Text = "";
+                habilitaCampos(false);
                 btngrabar.Enabled = true;
                 btnlimpiar.Enabled = true;
-
+                tbCampos.Visible = true;
 
                 Session["modo"] = "E";
                 lblmensaje.Text = "Esta seguro que desea eliminar el registro";
@@ -314,7 +115,7 @@ namespace Cursos
         protected void btngrabar_Click(object sender, EventArgs e)
         {
             lblmensaje.Text = "";
-            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["ApplicationServices"];
+            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
             String cadena_conexion = param.ConnectionString;
 
             SqlConnection conexion = new SqlConnection(cadena_conexion);
@@ -322,18 +123,18 @@ namespace Cursos
 
             if (Session["modo"] == "I")
             {
-                sql = "INSERT INTO evento (nombre,descripcion,categoria,objetivos,va_dirigido,prerrequisitos,aprendizaje,precio_ucsg,precio_publico,max_estudiante,min_estudiante,horario,docente,certificacion,n_horas,fecha_inicio,tema_1,tema_2,tema3) VALUES ('" + txtnombre.Text + "','" + txtdescripcion.Text + "','" + txtcategoria.Text + "','" + txtobjetivos.Text + "','" + txtva_dirigido.Text + "','" + txtprerrequisito.Text + "','" + txtaprendizaje.Text + "'," + txtprecio_ucsg.Text + "','" + txtprecio_publico.Text + "','" + txtmax_estudiante.Text + "','" + txtmin_estudiante.Text + "','" + txthorario.Text + "','" + txtdocente.Text + "','" + rblcertificacion.Text + "','" + txtn_horas.Text + "','" + txtfecha_inicio.Text + "','" + txttema_1.Text + "','" + txttema_2.Text + "','" + txttema_3.Text + "','A' )";
+                sql = "INSERT INTO tb_curso (nombre,descripcion,categoria,objetivos,va_dirigido,prerequisito,aprendizaje,precio_ucsg,precio_publico,max_estudiante,min_estudiante,horario,docente,certificacion,n_horas,fecha_inicio,tema_1,tema_2,tema3) VALUES ('" + txtnombre.Text + "','" + txtdescripcion.Text + "','" + ddlcategoria.SelectedValue + "','" + txtobjetivos.Text + "','" + txtva_dirigido.Text + "','" + txtprerequisito.Text + "','" + txtaprendizaje.Text + "','" + txtprecio_ucsg.Text + "','" + txtprecio_publico.Text + "','" + txtmax_estudiante.Text + "','" + txtmin_estudiante.Text + "','" + txthorario.Text + "','" + txtdocente.Text + "','" + rblcertificacion.Text + "','" + txtn_horas.Text + "','" + txtfecha_inicio.Text + "','" + txttema_1.Text + "','" + txttema_2.Text + "','" + txttema_3.Text + "','A' )";
 
             }
             else
             {
                 if (Session["modo"] == "M")
                 {
-                    sql = "UPDATE evento SET nombre = '" + txtnombre.Text + "', descripcion='" + txtdescripcion.Text + "', categoria='" + txtcategoria.Text + "', objetivos='" + txtobjetivos.Text + "', va_dirigido='" + txtva_dirigido.Text + "', prerrequisitos='" + txtprerrequisito + "' , aprendizaje='" + txtaprendizaje.Text + "',precio_ucsg='" + txtprecio_ucsg + "', precio_publico='" + txtprecio_publico + "' , max_estudiante='" + txtmax_estudiante.Text + "', min_estudiante='" + txtmin_estudiante.Text + "', horario='" + txthorario.Text + "', docente='" + txtdocente.Text + "', certificacion='" + rblcertificacion.Text + "', n_horas='" + txtn_horas.Text + "', fecha_inicio='" + txtfecha_inicio + "', tema_1='" + txttema_1 + "', tema_2='" + txttema_2 + "', tema_3='" + txttema_3 + "' WHERE codigo" + Session["codigo"];
+                    sql = "UPDATE tb_curso SET nombre = '" + txtnombre.Text + "', descripcion='" + txtdescripcion.Text + "', categoria='" + ddlcategoria.SelectedValue + "', objetivos='" + txtobjetivos.Text + "', va_dirigido='" + txtva_dirigido.Text + "', prerequisito='" + txtprerequisito.Text + "' , aprendizaje='" + txtaprendizaje.Text + "',precio_ucsg='" + txtprecio_ucsg.Text + "', precio_publico='" + txtprecio_publico.Text + "' , max_estudiante='" + txtmax_estudiante.Text + "', min_estudiante='" + txtmin_estudiante.Text + "', horario='" + txthorario.Text + "', docente='" + txtdocente.Text + "', certificacion='" + rblcertificacion.Text + "', n_horas='" + txtn_horas.Text + "', fecha_inicio='" + txtfecha_inicio.Text + "', tema_1='" + txttema_1.Text + "', tema_2='" + txttema_2.Text + "', tema_3='" + txttema_3.Text + "' WHERE codigo=" + Session["codigo"];
                 }
                 else
                 {
-                    sql = "UPDATE evento SET estado='I' WHERE codigo =" + Session["codigo"];
+                    sql = "UPDATE tb_curso SET estado='I' WHERE codigo =" + Session["codigo"];
 
                 }
 
@@ -354,7 +155,7 @@ namespace Cursos
                 lblmensaje.Text = "Ocurrio un error al ejecutar la transaccion";
 
             }
-
+            lblmensaje.Visible = true;
             conexion.Close();
         }
 
@@ -363,7 +164,7 @@ namespace Cursos
             string Sql = "SELECT codigo, nombre, categoria, FROM tb_curso WHERE estado='A' AND " + ddlbuscar.SelectedValue + " LIKE '%" + txtbuscar.Text + "%'";
 
             lblbuscarerror.Text = "";
-            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["applicationservices"];
+            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
             string cadenaConexion = param.ConnectionString;
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             string sql;
@@ -385,12 +186,15 @@ namespace Cursos
                 ;
 
             }
-            txtbuscar.Text = "";
+            
             SqlDataAdapter da = new SqlDataAdapter(sql, conexion);
             DataSet ds = new DataSet();
             da.Fill(ds);
             grvcursos.DataSource = ds;
             grvcursos.DataBind();
+            if (grvcursos.Rows.Count == 0)
+                lblbuscarerror.Text = "No hay cursos con los datos de su busqueda '"+txtbuscar.Text+"'";
+            txtbuscar.Text = "";
 
         }
 
@@ -414,9 +218,83 @@ namespace Cursos
                 }
             }
         }
+        protected void cargaCategorias()
+        {
+            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
+            String cadena_conexion = param.ConnectionString;
 
+            SqlConnection conexion = new SqlConnection(cadena_conexion);
+            SqlCommand OrdenSqlSelect = new SqlCommand("select id, descripcion from tb_categorias_cursos where estado = 'A'");
+            SqlDataAdapter da = new SqlDataAdapter(OrdenSqlSelect.CommandText, conexion);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            ddlcategoria.DataSource = ds;
+            ddlcategoria.DataValueField = "id";
+            ddlcategoria.DataTextField = "descripcion"; 
+            ddlcategoria.DataBind();
+        }
 
+        protected void cargaIdCurso()
+        {
+            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
+            String cadena_conexion = param.ConnectionString;
 
+            SqlConnection conexion = new SqlConnection(cadena_conexion);
+            SqlCommand OrdenSqlSelect = new SqlCommand("SELECT  ISNULL(MAX(CAST(codigo AS INT)),0) + 1 As 'nuevocodigo' From tb_curso");
+            SqlDataAdapter da = new SqlDataAdapter(OrdenSqlSelect.CommandText, conexion);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+           
+            txtcodigo.Text = Convert.ToString(ds.Tables[0].Rows[0]["nuevocodigo"].ToString());
+        }
+        protected void limpiaCampos()
+        {
+            txtcodigo.Text = "";
+            txtnombre.Text = "";
+            txtdescripcion.Text = "";
+            ddlcategoria.SelectedIndex = 0;
+            txtobjetivos.Text = "";
+            txtva_dirigido.Text = "";
+            txtprerequisito.Text = "";
+            txtaprendizaje.Text = "";
+            txtprecio_ucsg.Text = "";
+            txtprecio_publico.Text = "";
+            txtmax_estudiante.Text = "";
+            txtmin_estudiante.Text = "";
+            txthorario.Text = "";
+            txtdocente.Text = "";
+            rblcertificacion.SelectedIndex = 0;
+            txtn_horas.Text = "";
+            txtfecha_inicio.Text = "";
+
+            txttema_1.Text = "";
+            txttema_2.Text = "";
+            txttema_3.Text = "";
+        }
+        protected void habilitaCampos(Boolean estado)
+        {
+            txtnombre.Enabled = estado;
+            txtdescripcion.Enabled = estado;
+            ddlcategoria.Enabled = estado;
+            txtobjetivos.Enabled = estado;
+            txtva_dirigido.Enabled = estado;
+            txtprerequisito.Enabled = estado;
+            txtaprendizaje.Enabled = estado;
+            txtprecio_ucsg.Enabled = estado;
+            txtprecio_publico.Enabled = estado;
+            txtmax_estudiante.Enabled = estado;
+            txtmin_estudiante.Enabled = estado;
+            txthorario.Enabled = estado;
+            txtdocente.Enabled = estado;
+            rblcertificacion.Enabled = estado;
+            txtn_horas.Enabled = estado;
+            txtfecha_inicio.Enabled = estado;
+            // lblfoto.Visible = false;
+            txttema_1.Enabled = estado;
+            txttema_2.Enabled = estado;
+            txttema_3.Enabled = estado;
+            fufoto.Enabled = estado;
+        }
     }
 }
        
