@@ -58,6 +58,15 @@ namespace Cursos {
         protected global::System.Web.UI.WebControls.Button btnbuscar;
         
         /// <summary>
+        /// Control lblbuscarerror.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblbuscarerror;
+        
+        /// <summary>
         /// Control grvcursos.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace Cursos {
         protected global::System.Web.UI.WebControls.TextBox txtcodigo;
         
         /// <summary>
+        /// Control tbCampos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTable tbCampos;
+        
+        /// <summary>
         /// Control lblnombre.
         /// </summary>
         /// <remarks>
@@ -119,15 +137,6 @@ namespace Cursos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtnombre;
-        
-        /// <summary>
-        /// Control rfvnombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvnombre;
         
         /// <summary>
         /// Control lbldescripcion.
@@ -400,15 +409,6 @@ namespace Cursos {
         protected global::System.Web.UI.WebControls.TextBox txtfecha_inicio;
         
         /// <summary>
-        /// Control lblfoto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblfoto;
-        
-        /// <summary>
         /// Control lbltema_1.
         /// </summary>
         /// <remarks>
@@ -463,13 +463,76 @@ namespace Cursos {
         protected global::System.Web.UI.WebControls.TextBox txttema_3;
         
         /// <summary>
-        /// Control vlsmensajes.
+        /// Control lblfoto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vlsmensajes;
+        protected global::System.Web.UI.WebControls.Label lblfoto;
+        
+        /// <summary>
+        /// Control fufoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fufoto;
+        
+        /// <summary>
+        /// Control lblimagen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblimagen;
+        
+        /// <summary>
+        /// Control txtfoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtfoto;
+        
+        /// <summary>
+        /// Control btnCargar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCargar;
+        
+        /// <summary>
+        /// Control lblRFoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRFoto;
+        
+        /// <summary>
+        /// Control btngrabar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btngrabar;
+        
+        /// <summary>
+        /// Control btnlimpiar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnlimpiar;
         
         /// <summary>
         /// Control lblmensaje.

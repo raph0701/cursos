@@ -4,3 +4,9 @@ c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\bin\Cursos.
 c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\obj\Debug\Cursos.dll
 c:\users\genesis\documents\visual studio 2013\Projects\Cursos\Cursos\obj\Debug\Cursos.pdb
 C:\Users\Genesis\documents\visual studio 2013\Projects\Cursos\Cursos\obj\Debug\Cursos.csprojResolveAssemblyReference.cache
+C:\Users\Genesis\Documents\cursos\Cursos\Cursos\obj\Debug\Cursos.csprojResolveAssemblyReference.cache
+C:\Users\Genesis\Documents\cursos\Cursos\Cursos\obj\Debug\Cursos.dll
+C:\Users\Genesis\Documents\cursos\Cursos\Cursos\bin\Cursos.dll.config
+C:\Users\Genesis\Documents\cursos\Cursos\Cursos\bin\Cursos.dll
+C:\Users\Genesis\Documents\cursos\Cursos\Cursos\bin\Cursos.pdb
+C:\Users\Genesis\Documents\cursos\Cursos\Cursos\obj\Debug\Cursos.pdb
