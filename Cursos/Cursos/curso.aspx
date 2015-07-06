@@ -132,6 +132,8 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
+              </table>
+            <table style="width: 100%;" id="tbCampos" runat="server">
             <tr>
                 <td>
                     <asp:Label ID="lblcodigo" runat="server" Text="CODIGO"></asp:Label>
@@ -141,8 +143,8 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
-            </table>
-         <table style="width: 100%;" id="tbCampos" runat="server">
+          
+         
             <tr>
                 <td>
                     <asp:Label ID="lblnombre" runat="server" Text="NOMBRE"></asp:Label>
@@ -297,6 +299,7 @@
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="txttema_1" runat="server"></asp:TextBox>
+                    </td>
             </tr>
             <tr>
                  <td>&nbsp;</td>
@@ -364,12 +367,7 @@
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             </tr>
-            <tr>
-                <td>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    
-                
-            </tr>
+           
             <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

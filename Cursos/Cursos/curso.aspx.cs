@@ -57,7 +57,8 @@ namespace Cursos
             lbltema_2.Visible = false;
             txttema_2.Visible = false;
             lbltema_3.Visible = false;
-            txttema_3.Visible = false;
+            txttema_3.Visible = false;*/
+            tbCampos.Visible = false;
 
 
             if (!Page.IsPostBack)
@@ -162,7 +163,7 @@ namespace Cursos
             txtmin_estudiante.Text = "";
             txthorario.Text = "";
             txtdocente.Text = "";
-            rblcertificacion.Text = "";
+            rblcertificacion.SelectedIndex = 0;
             txtn_horas.Text = "";
             txtfecha_inicio.Text = "";
             lblfoto.Visible = false;
@@ -237,7 +238,7 @@ namespace Cursos
             txtmin_estudiante.Text = registro.Cells[12].Text;
             txthorario.Text = registro.Cells[13].Text;
             txtdocente.Text = registro.Cells[14].Text;
-            rblcertificacion.Text = registro.Cells[15].Text;
+            rblcertificacion.SelectedValue = registro.Cells[15].Text;
             txtn_horas.Text = registro.Cells[16].Text;
             txtfecha_inicio.Text = registro.Cells[17].Text;
             txttema_1.Text = registro.Cells[18].Text;
@@ -272,7 +273,7 @@ namespace Cursos
                 // lblmensa.Text = "";
                 btngrabar.Enabled = true;
                 btnlimpiar.Enabled = true;
-
+                tbCampos.Visible = true;
                 Session["modo"] = "M";
             }
             else
