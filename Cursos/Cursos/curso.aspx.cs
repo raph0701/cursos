@@ -77,12 +77,17 @@ namespace Cursos
             txtdocente.Text = registro.Cells[14].Text;
             rblcertificacion.SelectedValue = registro.Cells[15].Text;
             txtn_horas.Text = registro.Cells[16].Text;
-            txtfecha_inicio.Text = registro.Cells[17].Text;
-
+           
+            OrdenSqlSelect = new SqlCommand("SELECT  foto, fecha_inicio from tb_curso where codigo = '"+registro.Cells[1].Text+"'");
+             da = new SqlDataAdapter(OrdenSqlSelect.CommandText, conexion);
+             ds = new DataSet();
+            da.Fill(ds);
+            txtfoto.Text = Convert.ToString(ds.Tables[0].Rows[0]["foto"].ToString());
+            txtfecha_inicio.Text =Convert.ToString( DateTime.ParseExact("2014-12-12", "yyyy-mm-dd", CultureInfo.InvariantCulture));
             txttema_1.Text = registro.Cells[18].Text;
             txttema_2.Text = registro.Cells[19].Text;
             txttema_3.Text = registro.Cells[20].Text;
-            // fufoto. = registro.Cells[21].Text;
+            
             Session["codigo"] = registro.Cells[1].Text;
 
             if (e.CommandName == "modificar")
@@ -115,14 +120,14 @@ namespace Cursos
 
             if (Session["modo"] == "I")
             {
-                sql = "INSERT INTO tb_curso (nombre,descripcion,categoria,objetivos,va_dirigido,prerequisito,aprendizaje,precio_ucsg,precio_publico,max_estudiante,min_estudiante,horario,docente,certificacion,n_horas,fecha_inicio,tema_1,tema_2,tema_3, estado, foto) VALUES ('" + txtnombre.Text + "','" + txtdescripcion.Text + "','" + ddlcategoria.SelectedValue + "','" + txtobjetivos.Text + "','" + txtva_dirigido.Text + "','" + txtprerequisito.Text + "','" + txtaprendizaje.Text + "','" + txtprecio_ucsg.Text + "','" + txtprecio_publico.Text + "','" + txtmax_estudiante.Text + "','" + txtmin_estudiante.Text + "','" + txthorario.Text + "','" + txtdocente.Text + "','" + rblcertificacion.Text + "','" + txtn_horas.Text + "','" + txtfecha_inicio.Text + "','" + txttema_1.Text + "','" + txttema_2.Text + "','" + txttema_3.Text + "','A' , '" + rutaImagenes + "/" + txtfoto.Text + "')";
+                sql = "INSERT INTO tb_curso (nombre,descripcion,categoria,objetivos,va_dirigido,prerequisito,aprendizaje,precio_ucsg,precio_publico,max_estudiante,min_estudiante,horario,docente,certificacion,n_horas,fecha_inicio,tema_1,tema_2,tema_3, estado, foto) VALUES ('" + txtnombre.Text + "','" + txtdescripcion.Text + "','" + ddlcategoria.SelectedValue + "','" + txtobjetivos.Text + "','" + txtva_dirigido.Text + "','" + txtprerequisito.Text + "','" + txtaprendizaje.Text + "','" + txtprecio_ucsg.Text + "','" + txtprecio_publico.Text + "','" + txtmax_estudiante.Text + "','" + txtmin_estudiante.Text + "','" + txthorario.Text + "','" + txtdocente.Text + "','" + rblcertificacion.Text + "','" + txtn_horas.Text + "','" + txtfecha_inicio.Text + "','" + txttema_1.Text + "','" + txttema_2.Text + "','" + txttema_3.Text + "','A' , '" + txtfoto.Text + "')";
                 
             }
             else
             {
                 if (Session["modo"] == "M")
                 {
-                    sql = "UPDATE tb_curso SET nombre = '" + txtnombre.Text + "', descripcion='" + txtdescripcion.Text + "', categoria='" + ddlcategoria.SelectedValue + "', objetivos='" + txtobjetivos.Text + "', va_dirigido='" + txtva_dirigido.Text + "', prerequisito='" + txtprerequisito.Text + "' , aprendizaje='" + txtaprendizaje.Text + "',precio_ucsg=" + txtprecio_ucsg.Text + ", precio_publico=" + txtprecio_publico.Text + " , max_estudiante='" + txtmax_estudiante.Text + "', min_estudiante='" + txtmin_estudiante.Text + "', horario='" + txthorario.Text + "', docente='" + txtdocente.Text + "', certificacion='" + rblcertificacion.Text + "', n_horas='" + txtn_horas.Text + "', fecha_inicio='" + txtfecha_inicio.Text + "', tema_1='" + txttema_1.Text + "', tema_2='" + txttema_2.Text + "', tema_3='" + txttema_3.Text + "', foto ='"+rutaImagenes+"/"+txtfoto.Text+"' WHERE codigo=" + Session["codigo"];
+                    sql = "UPDATE tb_curso SET nombre = '" + txtnombre.Text + "', descripcion='" + txtdescripcion.Text + "', categoria='" + ddlcategoria.SelectedValue + "', objetivos='" + txtobjetivos.Text + "', va_dirigido='" + txtva_dirigido.Text + "', prerequisito='" + txtprerequisito.Text + "' , aprendizaje='" + txtaprendizaje.Text + "',precio_ucsg=" + txtprecio_ucsg.Text + ", precio_publico=" + txtprecio_publico.Text + " , max_estudiante='" + txtmax_estudiante.Text + "', min_estudiante='" + txtmin_estudiante.Text + "', horario='" + txthorario.Text + "', docente='" + txtdocente.Text + "', certificacion='" + rblcertificacion.Text + "', n_horas='" + txtn_horas.Text + "', fecha_inicio='" + txtfecha_inicio.Text + "', tema_1='" + txttema_1.Text + "', tema_2='" + txttema_2.Text + "', tema_3='" + txttema_3.Text + "', foto ='"+txtfoto.Text+"' WHERE codigo=" + Session["codigo"];
                 }
                 else
                 {
@@ -149,6 +154,8 @@ namespace Cursos
             }
             lblmensaje.Visible = true;
             cargaGrid();
+            limpiaCampos();
+            tbCampos.Visible = false;
             conexion.Close();
         }
 
@@ -170,7 +177,7 @@ namespace Cursos
                     //save the file to our local path
                     fufoto.SaveAs(fileName);
                     lblRFoto.Text = "Foto subida correctamente";
-                    txtfoto.Text = fufoto.FileName;
+                    txtfoto.Text = rutaImagenes + "/"+ fufoto.FileName;
                 }
                 catch (IOException)
                 {
@@ -262,12 +269,7 @@ namespace Cursos
         }
 
         protected void cargaGrid()
-        {
-            
-            string Sql = "SELECT c.codigo, c.nombre, c.descripcion, ca.descripcion as categoria, c.objetivos, c.va_dirigido, c.prerequisito, " +
-                                "c.aprendizaje, c.precio_ucsg, c.precio_publico, c.max_estudiante, c.min_estudiante, c.horario, c.docente, " +
-                                "c.certificacion, c.n_horas, c.fecha_inicio, c.foto, c.tema_1, c.tema_2, c.tema_3, c.estado " +
-                         "FROM tb_curso WHERE c.estado='A' AND c." + ddlbuscar.SelectedValue + " LIKE '%" + txtbuscar.Text + "%' and c.categoria=ca.id";
+        {            
             try
             {
                 lblbuscarerror.Text = "";

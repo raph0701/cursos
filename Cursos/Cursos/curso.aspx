@@ -141,7 +141,7 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td> <asp:Label ID="lblmensaje" runat="server"></asp:Label></td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -155,17 +155,14 @@
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-<<<<<<< HEAD
+
             </tr>
           
          
-            <tr>
-                <td class="auto-style11">
-=======
-            </tr>  
+             
               <tr>
                 <td>
->>>>>>> 580f2a59c8a091ca97627072bf5036db8058286a
+
                     <asp:Label ID="lblnombre" runat="server" Text="NOMBRE"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="txtnombre" runat="server" 
@@ -317,14 +314,10 @@
                     <asp:Label ID="lblfecha_inicio" runat="server" Text="FECHA DE INICIO"></asp:Label>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<<<<<<< HEAD
-                    <asp:TextBox ID="txtfecha_inicio" runat="server" type="date"></asp:TextBox>
+
+                    <asp:TextBox ID="txtfecha_inicio" runat="server" type="date" ></asp:TextBox>
                 </td>
-=======
-                    <asp:TextBox ID="txtfecha_inicio" runat="server"></asp:TextBox>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
->>>>>>> 580f2a59c8a091ca97627072bf5036db8058286a
+
             </tr>
             <tr>    <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -409,7 +402,7 @@
             </tr>
             <tr>
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="lblmensaje" runat="server"></asp:Label>
+                    
                     </td>
             </tr>
             <tr>
@@ -641,6 +634,7 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
+       
     </form>
 </body>
     <script type="text/javascript">
