@@ -136,8 +136,7 @@
                 <td>
                     <asp:Button ID="btnnuevo" runat="server" OnClick="btnnuevo_Click" Text="NUEVO" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnactualizar" runat="server" Text="ACTUALIZAR" />
-                </td>
+                    </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -156,11 +155,17 @@
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
+<<<<<<< HEAD
             </tr>
           
          
             <tr>
                 <td class="auto-style11">
+=======
+            </tr>  
+              <tr>
+                <td>
+>>>>>>> 580f2a59c8a091ca97627072bf5036db8058286a
                     <asp:Label ID="lblnombre" runat="server" Text="NOMBRE"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="txtnombre" runat="server" 
@@ -312,8 +317,14 @@
                     <asp:Label ID="lblfecha_inicio" runat="server" Text="FECHA DE INICIO"></asp:Label>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<<<<<<< HEAD
                     <asp:TextBox ID="txtfecha_inicio" runat="server" type="date"></asp:TextBox>
                 </td>
+=======
+                    <asp:TextBox ID="txtfecha_inicio" runat="server"></asp:TextBox>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+>>>>>>> 580f2a59c8a091ca97627072bf5036db8058286a
             </tr>
             <tr>    <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -358,7 +369,8 @@
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:FileUpload ID="fufoto" runat="server" />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;<asp:Button ID="btnCargar" runat="server" Text="Subir Foto" OnClick="btnCargar_Click" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </td>
                 
             </tr>
@@ -366,7 +378,6 @@
                 <td>&nbsp;<asp:Label ID="lblimagen" runat="server" Text="Imagen seleccionada"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <asp:TextBox ID="txtfoto" runat="server" Enabled="false"></asp:TextBox>
-                    <asp:Button ID="btnCargar" runat="server" Text="Subir Foto" OnClick="btnCargar_Click" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
