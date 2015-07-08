@@ -83,7 +83,14 @@ namespace Cursos
              ds = new DataSet();
             da.Fill(ds);
             txtfoto.Text = Convert.ToString(ds.Tables[0].Rows[0]["foto"].ToString());
-            txtfecha_inicio.Text =Convert.ToString( DateTime.ParseExact("2014-12-12", "yyyy-mm-dd", CultureInfo.InvariantCulture));
+            string fec = registro.Cells[17].Text;
+            fec = fec.Remove(10);
+            string[] split = fec.Split(new Char[] { '/'});
+            fec= split[2]+"-"+split[1]+"-"+split[0];
+           
+            txtfecha_inicio.Text = fec;
+            txtfecha_inicio.Text = (DateTime.ParseExact(fec, "yyyy-mm-dd", CultureInfo.InvariantCulture).ToString("yyyy-mm-dd"));
+
             txttema_1.Text = registro.Cells[18].Text;
             txttema_2.Text = registro.Cells[19].Text;
             txttema_3.Text = registro.Cells[20].Text;

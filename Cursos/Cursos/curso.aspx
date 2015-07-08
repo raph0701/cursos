@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+   
+     <title></title>
     <style type="text/css">
         .style1 {
             width: 195px;
@@ -165,8 +166,7 @@
 
                     <asp:Label ID="lblnombre" runat="server" Text="NOMBRE"></asp:Label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:TextBox ID="txtnombre" runat="server" 
-                        input type="text" name="nom"  onkeypress="return soloLetras(event)" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtnombre" runat="server" input type="text" name="nom"  onkeypress="return soloLetras(event)" Width="300px"></asp:TextBox>
                     &nbsp;</td>
                 <td class="auto-style11"></td>
                 <td class="auto-style11"></td>
@@ -315,7 +315,7 @@
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <asp:TextBox ID="txtfecha_inicio" runat="server" type="date" ></asp:TextBox>
+                    <asp:TextBox ID="txtfecha_inicio" runat="server" type="date"  ></asp:TextBox>
                 </td>
 
             </tr>
