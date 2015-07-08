@@ -88,27 +88,17 @@
                             <asp:ButtonField CommandName="modificar" Text="MODIFICAR" />
                             <asp:BoundField DataField="codigo" HeaderText="CODIGO" />
                             <asp:BoundField DataField="nombre" HeaderText="NOMBRE" />
-                            <asp:BoundField DataField="descripcion" HeaderText="DESCRIPCION" />
                             <asp:BoundField DataField="categoria" HeaderText="CATEGORIA" />
-                            <asp:BoundField DataField="objetivos" HeaderText="OBJETIVOS" />
-                            <asp:BoundField DataField="va_dirigido" HeaderText="A QUIEN VA DIRIGIDO" />
-                            <asp:BoundField DataField="prerequisito" HeaderText="PRE REQUISITOS" />
-                            <asp:BoundField DataField="aprendizaje" HeaderText="APRENDIZAJE" />
                             <asp:BoundField DataField="precio_ucsg" HeaderText="PRECIO UCSG" />
                             <asp:BoundField DataField="precio_publico" HeaderText="PRECIO PUBLICO" />
-                            <asp:BoundField DataField="max_estudiante" HeaderText="MAX ESTUDIANTE" />
-                            <asp:BoundField DataField="min_estudiante" HeaderText="MIN ESTUDIANTE" />
                             <asp:BoundField DataField="horario" HeaderText="HORARIO" />
                             <asp:BoundField DataField="docente" HeaderText="DOCENTE" />
                             <asp:BoundField DataField="certificacion" HeaderText="CERTIFICACION" />
                             <asp:BoundField DataField="n_horas" HeaderText="N° HORAS" />
                             <asp:BoundField DataField="fecha_inicio" HeaderText="FECHA INICIO" />
-                            <asp:BoundField DataField="tema_1" HeaderText="TEMA 1" />
-                            <asp:BoundField DataField="tema_2" HeaderText="TEMA 2" />
-                            <asp:BoundField DataField="tema_3" HeaderText="TEMA 3" />
+                            
                             <asp:ImageField DataImageUrlField="foto" HeaderText="FOTO">
                             </asp:ImageField>
-                            <asp:BoundField DataField="estado" HeaderText="ESTADO" />
                             <asp:ButtonField CommandName="eliminar" Text="ELIMINAR" />
                             
                         </Columns>

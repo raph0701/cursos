@@ -54,46 +54,43 @@ namespace Cursos
             txtcodigo.Text = registro.Cells[1].Text;
             txtcodigo.Enabled = false;
             txtnombre.Text = registro.Cells[2].Text;
-            txtdescripcion.Text = registro.Cells[3].Text;
              
             ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
             String cadena_conexion = param.ConnectionString;
             SqlConnection conexion = new SqlConnection(cadena_conexion);
-            SqlCommand OrdenSqlSelect = new SqlCommand("SELECT  id from tb_categorias_cursos where descripcion = '"+registro.Cells[4].Text+"'");
+            SqlCommand OrdenSqlSelect = new SqlCommand("SELECT  id from tb_categorias_cursos where descripcion = '"+registro.Cells[3].Text+"'");
             SqlDataAdapter da = new SqlDataAdapter(OrdenSqlSelect.CommandText, conexion);
             DataSet ds = new DataSet();
             da.Fill(ds);
             ddlcategoria.SelectedValue = Convert.ToString(ds.Tables[0].Rows[0]["id"].ToString()); ;
-
-            txtobjetivos.Text = registro.Cells[5].Text;
-            txtva_dirigido.Text = registro.Cells[6].Text;
-            txtprerequisito.Text = registro.Cells[7].Text;
-            txtaprendizaje.Text = registro.Cells[8].Text;
-            txtprecio_ucsg.Text = registro.Cells[9].Text;
-            txtprecio_publico.Text = registro.Cells[10].Text;
-            txtmax_estudiante.Text = registro.Cells[11].Text;
-            txtmin_estudiante.Text = registro.Cells[12].Text;
-            txthorario.Text = registro.Cells[13].Text;
-            txtdocente.Text = registro.Cells[14].Text;
-            rblcertificacion.SelectedValue = registro.Cells[15].Text;
-            txtn_horas.Text = registro.Cells[16].Text;
+            txtprecio_ucsg.Text = registro.Cells[4].Text;
+            txtprecio_publico.Text = registro.Cells[5].Text;
+            
+            txthorario.Text = registro.Cells[6].Text;
+            txtdocente.Text = registro.Cells[7].Text;
+            rblcertificacion.SelectedValue =  (registro.Cells[8].Text=="si")? "S" : "N" ;
+            txtn_horas.Text = registro.Cells[9].Text;
+            string fec = registro.Cells[10].Text;
+            fec = fec.Remove(10);
+            string[] split = fec.Split(new Char[] { '/'});
+            fec= split[2]+"-"+split[1]+"-"+split[0];
+            txtfecha_inicio.Text = (DateTime.ParseExact(fec, "yyyy-mm-dd", CultureInfo.InvariantCulture).ToString("yyyy-mm-dd"));
            
-            OrdenSqlSelect = new SqlCommand("SELECT  foto, fecha_inicio from tb_curso where codigo = '"+registro.Cells[1].Text+"'");
+            OrdenSqlSelect = new SqlCommand("SELECT  foto, descripcion, objetivos, va_dirigido, prerequisito, aprendizaje, max_estudiante, min_estudiante, tema_1, tema_2, tema_3 from tb_curso where codigo = '"+registro.Cells[1].Text+"'");
              da = new SqlDataAdapter(OrdenSqlSelect.CommandText, conexion);
              ds = new DataSet();
             da.Fill(ds);
             txtfoto.Text = Convert.ToString(ds.Tables[0].Rows[0]["foto"].ToString());
-            string fec = registro.Cells[17].Text;
-            fec = fec.Remove(10);
-            string[] split = fec.Split(new Char[] { '/'});
-            fec= split[2]+"-"+split[1]+"-"+split[0];
-           
-            txtfecha_inicio.Text = fec;
-            txtfecha_inicio.Text = (DateTime.ParseExact(fec, "yyyy-mm-dd", CultureInfo.InvariantCulture).ToString("yyyy-mm-dd"));
-
-            txttema_1.Text = registro.Cells[18].Text;
-            txttema_2.Text = registro.Cells[19].Text;
-            txttema_3.Text = registro.Cells[20].Text;
+            txtmax_estudiante.Text = ds.Tables[0].Rows[0]["max_estudiante"].ToString();
+            txtmin_estudiante.Text = ds.Tables[0].Rows[0]["min_estudiante"].ToString();
+            txtdescripcion.Text = ds.Tables[0].Rows[0]["descripcion"].ToString();
+            txtobjetivos.Text = ds.Tables[0].Rows[0]["objetivos"].ToString();
+            txtva_dirigido.Text = ds.Tables[0].Rows[0]["va_dirigido"].ToString();
+            txtprerequisito.Text = ds.Tables[0].Rows[0]["prerequisito"].ToString();
+            txtaprendizaje.Text = ds.Tables[0].Rows[0]["aprendizaje"].ToString();
+            txttema_1.Text = ds.Tables[0].Rows[0]["tema_1"].ToString();
+            txttema_2.Text = ds.Tables[0].Rows[0]["tema_2"].ToString();
+            txttema_3.Text = ds.Tables[0].Rows[0]["tema_3"].ToString();
             
             Session["codigo"] = registro.Cells[1].Text;
 
@@ -118,52 +115,69 @@ namespace Cursos
 
         protected void btngrabar_Click(object sender, EventArgs e)
         {
-            lblmensaje.Text = "";
-            ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
-            String cadena_conexion = param.ConnectionString;
-
-            SqlConnection conexion = new SqlConnection(cadena_conexion);
-            string sql = "";
-
-            if (Session["modo"] == "I")
+            
+            if (!txtfecha_inicio.Text.Equals("") || !string.IsNullOrWhiteSpace(txtnombre.Text) || !string.IsNullOrEmpty(txtnombre.Text) || !string.IsNullOrWhiteSpace(txtdescripcion.Text) || !string.IsNullOrEmpty(txtdescripcion.Text) || !string.IsNullOrWhiteSpace(txtdocente.Text) || !string.IsNullOrEmpty(txtdocente.Text) || !string.IsNullOrWhiteSpace(txtfecha_inicio.Text) || !string.IsNullOrEmpty(txtfecha_inicio.Text) || !string.IsNullOrWhiteSpace(txthorario.Text) || !string.IsNullOrEmpty(txthorario.Text) || !string.IsNullOrWhiteSpace(txtmax_estudiante.Text) || !string.IsNullOrEmpty(txtmax_estudiante.Text) || !string.IsNullOrWhiteSpace(txtmin_estudiante.Text) || !string.IsNullOrEmpty(txtmin_estudiante.Text) || !string.IsNullOrWhiteSpace(txtn_horas.Text) || !string.IsNullOrEmpty(txtn_horas.Text) || !string.IsNullOrWhiteSpace(txthorario.Text) || !string.IsNullOrEmpty(txthorario.Text) || !string.IsNullOrWhiteSpace(txtobjetivos.Text) || !string.IsNullOrEmpty(txtobjetivos.Text))
             {
-                sql = "INSERT INTO tb_curso (nombre,descripcion,categoria,objetivos,va_dirigido,prerequisito,aprendizaje,precio_ucsg,precio_publico,max_estudiante,min_estudiante,horario,docente,certificacion,n_horas,fecha_inicio,tema_1,tema_2,tema_3, estado, foto) VALUES ('" + txtnombre.Text + "','" + txtdescripcion.Text + "','" + ddlcategoria.SelectedValue + "','" + txtobjetivos.Text + "','" + txtva_dirigido.Text + "','" + txtprerequisito.Text + "','" + txtaprendizaje.Text + "','" + txtprecio_ucsg.Text + "','" + txtprecio_publico.Text + "','" + txtmax_estudiante.Text + "','" + txtmin_estudiante.Text + "','" + txthorario.Text + "','" + txtdocente.Text + "','" + rblcertificacion.Text + "','" + txtn_horas.Text + "','" + txtfecha_inicio.Text + "','" + txttema_1.Text + "','" + txttema_2.Text + "','" + txttema_3.Text + "','A' , '" + txtfoto.Text + "')";
-                
-            }
-            else
-            {
-                if (Session["modo"] == "M")
+                if (Convert.ToInt32(txtmin_estudiante.Text) > Convert.ToInt32(txtmax_estudiante.Text))
                 {
-                    sql = "UPDATE tb_curso SET nombre = '" + txtnombre.Text + "', descripcion='" + txtdescripcion.Text + "', categoria='" + ddlcategoria.SelectedValue + "', objetivos='" + txtobjetivos.Text + "', va_dirigido='" + txtva_dirigido.Text + "', prerequisito='" + txtprerequisito.Text + "' , aprendizaje='" + txtaprendizaje.Text + "',precio_ucsg=" + txtprecio_ucsg.Text + ", precio_publico=" + txtprecio_publico.Text + " , max_estudiante='" + txtmax_estudiante.Text + "', min_estudiante='" + txtmin_estudiante.Text + "', horario='" + txthorario.Text + "', docente='" + txtdocente.Text + "', certificacion='" + rblcertificacion.Text + "', n_horas='" + txtn_horas.Text + "', fecha_inicio='" + txtfecha_inicio.Text + "', tema_1='" + txttema_1.Text + "', tema_2='" + txttema_2.Text + "', tema_3='" + txttema_3.Text + "', foto ='"+txtfoto.Text+"' WHERE codigo=" + Session["codigo"];
+                    lblmensaje.Text = "El mínimo de estudiantes no puede ser mayor al primero";
+                    lblmensaje.Visible = true;
                 }
                 else
                 {
-                    sql = "UPDATE tb_curso SET estado='I' WHERE codigo =" + Session["codigo"];
+                    lblmensaje.Text = "";
+                    ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
+                    String cadena_conexion = param.ConnectionString;
 
+                    SqlConnection conexion = new SqlConnection(cadena_conexion);
+                    string sql = "";
+
+                    if (Session["modo"] == "I")
+                    {
+                        sql = "INSERT INTO tb_curso (nombre,descripcion,categoria,objetivos,va_dirigido,prerequisito,aprendizaje,precio_ucsg,precio_publico,max_estudiante,min_estudiante,horario,docente,certificacion,n_horas,fecha_inicio,tema_1,tema_2,tema_3, estado, foto) VALUES ('" + txtnombre.Text + "','" + txtdescripcion.Text + "','" + ddlcategoria.SelectedValue + "','" + txtobjetivos.Text + "','" + txtva_dirigido.Text + "','" + txtprerequisito.Text + "','" + txtaprendizaje.Text + "','" + txtprecio_ucsg.Text + "','" + txtprecio_publico.Text + "','" + txtmax_estudiante.Text + "','" + txtmin_estudiante.Text + "','" + txthorario.Text + "','" + txtdocente.Text + "','" + rblcertificacion.Text + "','" + txtn_horas.Text + "','" + txtfecha_inicio.Text + "','" + txttema_1.Text + "','" + txttema_2.Text + "','" + txttema_3.Text + "','A' , '" + txtfoto.Text + "')";
+
+                    }
+                    else
+                    {
+                        if (Session["modo"] == "M")
+                        {
+                            sql = "UPDATE tb_curso SET nombre = '" + txtnombre.Text + "', descripcion='" + txtdescripcion.Text + "', categoria='" + ddlcategoria.SelectedValue + "', objetivos='" + txtobjetivos.Text + "', va_dirigido='" + txtva_dirigido.Text + "', prerequisito='" + txtprerequisito.Text + "' , aprendizaje='" + txtaprendizaje.Text + "',precio_ucsg=" + txtprecio_ucsg.Text + ", precio_publico=" + txtprecio_publico.Text + " , max_estudiante='" + txtmax_estudiante.Text + "', min_estudiante='" + txtmin_estudiante.Text + "', horario='" + txthorario.Text + "', docente='" + txtdocente.Text + "', certificacion='" + rblcertificacion.Text + "', n_horas='" + txtn_horas.Text + "', fecha_inicio='" + txtfecha_inicio.Text + "', tema_1='" + txttema_1.Text + "', tema_2='" + txttema_2.Text + "', tema_3='" + txttema_3.Text + "', foto ='" + txtfoto.Text + "' WHERE codigo=" + Session["codigo"];
+                        }
+                        else
+                        {
+                            sql = "UPDATE tb_curso SET estado='I' WHERE codigo =" + Session["codigo"];
+
+                        }
+
+                    }
+
+                    SqlCommand comando = new SqlCommand(sql, conexion);
+                    conexion.Open();
+
+                    int numero_registro = comando.ExecuteNonQuery();
+
+                    if (numero_registro == 1)
+                    {
+                        lblmensaje.Text = "La transaccion se ejecuto correctamente";
+
+                    }
+                    else
+                    {
+                        lblmensaje.Text = "Ocurrio un error al ejecutar la transaccion";
+
+                    }
+                    lblmensaje.Visible = true;
+                    cargaGrid();
+                    limpiaCampos();
+                    tbCampos.Visible = false;
+                    conexion.Close();
                 }
-
-            }
-
-            SqlCommand comando = new SqlCommand(sql, conexion);
-            conexion.Open();
-
-            int numero_registro = comando.ExecuteNonQuery();
-
-            if (numero_registro == 1)
-            {
-                lblmensaje.Text = "La transaccion se ejecuto correctamente";
-
             }
             else
             {
-                lblmensaje.Text = "Ocurrio un error al ejecutar la transaccion";
-
-            }
-            lblmensaje.Visible = true;
-            cargaGrid();
-            limpiaCampos();
-            tbCampos.Visible = false;
-            conexion.Close();
+                lblmensaje.Text = "No puede dejar campos vacios";
+                lblmensaje.Visible = true;
+             }
         }
 
         protected void btnbuscar_Click(object sender, EventArgs e)
@@ -283,10 +297,10 @@ namespace Cursos
                 ConnectionStringSettings param = ConfigurationManager.ConnectionStrings["tutoriaConnectionString"];
                 string cadenaConexion = param.ConnectionString;
                 SqlConnection conexion = new SqlConnection(cadenaConexion);
-                string sql = "SELECT c.codigo, c.nombre, c.descripcion, ca.descripcion as categoria, c.objetivos, c.va_dirigido, c.prerequisito, " +
-                                    "c.aprendizaje, c.precio_ucsg, c.precio_publico, c.max_estudiante, c.min_estudiante, c.horario, c.docente, " +
-                                    "c.certificacion, c.n_horas, c.fecha_inicio, c.foto, c.tema_1, c.tema_2, c.tema_3, c.estado " +
-                                    " from tb_curso c, tb_categorias_cursos ca where c.estado='A' and c.categoria=ca.id ";
+                string sql = "SELECT c.codigo, c.nombre, ca.descripcion as categoria, c.foto," +
+                                    " c.precio_ucsg, c.precio_publico, c.horario, c.docente, c.fecha_inicio," +
+                                    " case when (c.certificacion)='s' then 'Si' else 'No' end  as certificacion, c.n_horas " +
+                               " FROM tb_curso c, tb_categorias_cursos ca WHERE c.estado='A' and c.categoria=ca.id ";
                 int numval = 0;
                 if (ddlbuscar.SelectedValue == "codigo")
                 {
@@ -314,8 +328,8 @@ namespace Cursos
                     lblbuscarerror.Text = "No hay cursos con los datos de su busqueda '" + txtbuscar.Text + "'";
                 txtbuscar.Text = "";
             }
-            catch (Exception)
-            { }
+            catch (Exception e)
+            { string s= e.Message; }
         }
 
        
